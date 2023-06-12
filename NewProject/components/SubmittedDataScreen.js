@@ -35,8 +35,6 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: "center",
-      // paddingHorizontal: windowWidth * 0.1,
-      // paddingVertical: windowHeight * 0.1,
     },
     scrollContainer: {
       flexGrow: 1,
