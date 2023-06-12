@@ -4,10 +4,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginForm from "../components/LoginForm";
 import RegistrationForm from "../components/RegistrationForm";
 import SubmittedDataScreen from "../components/SubmittedDataScreen";
-import { AppRegistry } from "react-native";
-import App from "../App";
+// import { AppRegistry } from "react-native";
+// import App from "../App";
 
-AppRegistry.registerComponent("App", () => App);
+// AppRegistry.registerComponent("App", () => App);
 
 
 const Stack = createStackNavigator();
