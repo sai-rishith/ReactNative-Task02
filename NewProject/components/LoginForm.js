@@ -10,8 +10,6 @@ import {
   ScrollView
 } from "react-native";
 
-import { useNavigation } from "@react-navigation/native";
-
 const LoginForm = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
