@@ -163,6 +163,7 @@ const LoginForm = ({ navigation }) => {
       username,
       password,
     };
+ 
     setSubmittedData([...submittedData, newData]);
     setUsername("");
     setPassword("");
@@ -170,7 +171,9 @@ const LoginForm = ({ navigation }) => {
       submittedData: [...submittedData, newData]
     });
   };
-
+  const handleRegister=()=>{
+    navigation.navigate('Register');
+  }
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
 
@@ -220,14 +223,17 @@ const LoginForm = ({ navigation }) => {
     registerContainer: {
       flexDirection: "row",
       marginTop: windowWidth * 0.02,
+      marginBottom:30
     },
     registerText: {
       fontSize: windowWidth * 0.04,
+      marginTop:15
     },
     registerLink: {
       color: "#008080",
       textDecorationLine: "none",
       marginLeft: windowWidth * 0.01,
+      marginTop:15,
     },
   });
 
@@ -274,7 +280,7 @@ const LoginForm = ({ navigation }) => {
         <Button title="Login" onPress={handleLogin} color="#008080" />
         <View style={styles.registerContainer}>
           <Text style={styles.registerText}>Don't have an account.</Text>
-          <Text style={styles.registerLink}>Register here</Text>
+          <Text style={styles.registerLink} onPress={handleRegister}>Register here</Text>
         </View>
       </View>
     </ScrollView>

@@ -2,6 +2,7 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginForm from "../components/LoginForm";
+import RegistrationForm from "../components/RegistrationForm";
 import SubmittedDataScreen from "../components/SubmittedDataScreen";
 import { AppRegistry } from "react-native";
 import App from "../App";
@@ -16,6 +17,7 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Login" component={LoginForm} />
+        <Stack.Screen name="Register" component={RegistrationForm} />
         <Stack.Screen name="SubmittedData" component={SubmittedDataScreen} />
       </Stack.Navigator>
     </NavigationContainer>
