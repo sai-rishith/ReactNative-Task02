@@ -293,6 +293,7 @@ import {
   Button
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { showMessage, hideMessage } from 'react-native-flash-message';
 import {
   validateFirstName,
   validateLastName,
@@ -337,7 +338,14 @@ const RegistrationForm = () => {
       setPhoneNumber('');
       setOTP('');
 
-      Alert.alert('Success', 'Registration completed!');
+    
+      showMessage({
+        message: 'Success',
+        description: 'Registration completed!',
+        type: 'success',
+        duration: 2000, // milliseconds
+      });
+
       navigation.navigate('Login');
     }
   };
