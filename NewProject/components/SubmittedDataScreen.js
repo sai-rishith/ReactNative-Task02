@@ -6,9 +6,9 @@ import { View, Text, FlatList, StyleSheet, Button } from "react-native";
 const SubmittedDataScreen = ({ navigation, route }) => {
   const { submittedData } = route.params;
 
-  const handleBackToLogin = () => {
+  function handleBackToLogin() {
     navigation.goBack();
-  };
+  }
 
   return (
     <View style={styles.container}>
