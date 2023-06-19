@@ -403,7 +403,15 @@
 
 // below code is without scroll view and includes hide/show password feature
 import React, { useState } from "react";
-import { View, Text, TextInput, Dimensions, StyleSheet, Image, TouchableOpacity, Button } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Dimensions,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import { validateUserName, validatePassword } from "./Validation";
 
 const LoginForm = ({ navigation }) => {
@@ -413,6 +421,7 @@ const LoginForm = ({ navigation }) => {
   const [passwordError, setPasswordError] = useState("");
   const [submittedData, setSubmittedData] = useState([]);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleLogin = () => {
     // Validate the username and password
@@ -446,6 +455,10 @@ const LoginForm = ({ navigation }) => {
     setPasswordVisible(!passwordVisible);
   };
 
+  const handleRememberMe = () => {
+    setRememberMe(!rememberMe);
+  };
+
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
 
@@ -453,14 +466,26 @@ const LoginForm = ({ navigation }) => {
     container: {
       flex: 1,
       justifyContent: "center",
-      alignItems: "center",
       paddingHorizontal: windowWidth * 0.1,
+    },
+    scrollContainer: {
+      flexGrow: 1,
+      justifyContent: "center",
+      paddingHorizontal: windowWidth * 0.1,
+    },
+    logoContainer: {
+      alignItems: "center",
+      marginBottom: windowWidth * 0.02,
+    },
+    logo: {
+      width: windowWidth * 0.6,
+      height: windowHeight * 0.3,
+      resizeMode: "contain",
     },
     label: {
       fontSize: windowWidth * 0.04,
       fontWeight: "bold",
-      marginBottom: windowWidth * 0.03,
-      alignSelf: "flex-start", 
+      marginBottom: windowWidth * 0.015,
     },
     inputContainer: {
       flexDirection: "row",
@@ -468,42 +493,55 @@ const LoginForm = ({ navigation }) => {
       borderWidth: 1,
       borderColor: "#ccc",
       borderRadius: 4,
-      marginBottom: windowWidth * 0.03,
+      marginBottom: windowWidth * 0.025,
+      paddingHorizontal: windowWidth * 0.02,
     },
     input: {
       flex: 1,
       height: 40,
-      paddingHorizontal: windowWidth * 0.02,
     },
     eyeIcon: {
-      padding: 8,
+      padding: windowWidth * 0.02,
     },
     error: {
       color: "red",
       fontSize: windowWidth * 0.035,
-      marginBottom: windowWidth * 0.03,
-    },
-    logoContainer: {
-      alignItems: "center",
-      marginBottom: windowWidth * 0.02, 
-    },
-    logo: {
-      width: windowWidth * 0.6,
-      height: windowHeight * 0.3,
-      resizeMode: "contain",
+      marginBottom: windowWidth * 0.015,
     },
     checkboxRow: {
       flexDirection: "row",
       alignItems: "center",
+      marginTop: windowWidth * 0.02,
       marginBottom: windowWidth * 0.03,
     },
-    rememberMeText: {
+    rememberMeCheckbox: {
+      width: windowWidth * 0.05,
+      height: windowWidth * 0.05,
       marginRight: windowWidth * 0.02,
+      borderWidth: 1,
+      borderColor: "#ccc",
+      borderRadius: 4,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    rememberMeText: {
+      fontSize: windowWidth * 0.04,
     },
     forgotPasswordLink: {
       color: "#008080",
-      textDecorationLine: "none",
-      marginLeft: windowWidth * 0.1, 
+      textDecorationLine: "underline",
+      marginLeft: windowWidth * 0.02,
+    },
+    loginButton: {
+      backgroundColor: "#008080",
+      paddingVertical: windowWidth * 0.035,
+      borderRadius: 4,
+      marginTop: windowWidth * 0.03,
+    },
+    loginButtonText: {
+      color: "#fff",
+      fontSize: windowWidth * 0.04,
+      textAlign: "center",
     },
     registerContainer: {
       flexDirection: "row",
@@ -512,30 +550,11 @@ const LoginForm = ({ navigation }) => {
     },
     registerText: {
       fontSize: windowWidth * 0.04,
-      marginTop: 15,
     },
     registerLink: {
       color: "#008080",
-      textDecorationLine: "none",
+      textDecorationLine: "underline",
       marginLeft: windowWidth * 0.01,
-      marginTop: 15,
-    },
-    loginButton: {
-      backgroundColor: "#008080",
-      paddingVertical: 12,
-      borderRadius: 4,
-      marginTop: windowWidth * 0.03,
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    loginButtonText: {
-      color: "#fff",
-      fontSize: windowWidth * 0.04,
-      fontWeight: "bold",
-    },
-    loginButtonContainer: {
-      width: "100%",
-      marginTop: windowWidth * 0.03,
     },
   });
 
@@ -552,14 +571,12 @@ const LoginForm = ({ navigation }) => {
       <Text style={styles.label}>Login to continue</Text>
 
       <Text style={styles.label}>Username:</Text>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your username"
-          value={username}
-          onChangeText={setUsername}
-        />
-      </View>
+      <TextInput
+        style={styles.inputContainer}
+        placeholder="Enter your username"
+        value={username}
+        onChangeText={setUsername}
+      />
       {usernameError !== "" && <Text style={styles.error}>{usernameError}</Text>}
 
       <Text style={styles.label}>Password:</Text>
@@ -571,34 +588,44 @@ const LoginForm = ({ navigation }) => {
           value={password}
           onChangeText={setPassword}
         />
-        <TouchableOpacity onPress={handleTogglePasswordVisibility} style={styles.eyeIcon}>
+        <TouchableOpacity
+          onPress={handleTogglePasswordVisibility}
+          style={styles.eyeIcon}
+        >
           <Text>{passwordVisible ? "Hide" : "Show"}</Text>
         </TouchableOpacity>
       </View>
       {passwordError !== "" && <Text style={styles.error}>{passwordError}</Text>}
 
       <View style={styles.checkboxRow}>
+        <TouchableOpacity
+          style={styles.rememberMeCheckbox}
+          onPress={handleRememberMe}
+        >
+          {rememberMe && <Text>✓</Text>}
+        </TouchableOpacity>
         <Text style={styles.rememberMeText}>Remember me</Text>
-        <Text style={styles.forgotPasswordLink}>Forgot password?</Text>
-      </View>
-    
-      <View style={styles.loginButtonContainer}>
-        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-          <Text style={styles.loginButtonText}>Login</Text>
+        <TouchableOpacity>
+          <Text style={styles.forgotPasswordLink}>Forgot password?</Text>
         </TouchableOpacity>
       </View>
 
+      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+        <Text style={styles.loginButtonText}>Login</Text>
+      </TouchableOpacity>
+
       <View style={styles.registerContainer}>
-        <Text style={styles.registerText}>Don't have an account.</Text>
-        <Text style={styles.registerLink} onPress={handleRegister}>
-          Register here
-        </Text>
+        <Text style={styles.registerText}>Don't have an account?</Text>
+        <TouchableOpacity onPress={handleRegister}>
+          <Text style={styles.registerLink}>Register here</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
 
 export default LoginForm;
+
 
 
 
