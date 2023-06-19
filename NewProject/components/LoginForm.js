@@ -467,25 +467,22 @@ const LoginForm = ({ navigation }) => {
       flex: 1,
       justifyContent: "center",
       paddingHorizontal: windowWidth * 0.1,
-    },
-    scrollContainer: {
-      flexGrow: 1,
-      justifyContent: "center",
-      paddingHorizontal: windowWidth * 0.1,
+      paddingTop: windowHeight * 0.05,
+      paddingBottom: windowHeight * 0.05,
     },
     logoContainer: {
       alignItems: "center",
-      marginBottom: windowWidth * 0.02,
+      marginBottom: windowHeight * 0.05,
     },
     logo: {
       width: windowWidth * 0.6,
-      height: windowHeight * 0.3,
+      height: windowHeight * 0.2,
       resizeMode: "contain",
     },
     label: {
       fontSize: windowWidth * 0.04,
       fontWeight: "bold",
-      marginBottom: windowWidth * 0.015,
+      marginBottom: windowHeight * 0.02,
     },
     inputContainer: {
       flexDirection: "row",
@@ -493,12 +490,13 @@ const LoginForm = ({ navigation }) => {
       borderWidth: 1,
       borderColor: "#ccc",
       borderRadius: 4,
-      marginBottom: windowWidth * 0.025,
+      marginBottom: windowHeight * 0.025,
       paddingHorizontal: windowWidth * 0.02,
+      height: windowHeight * 0.06,
     },
     input: {
       flex: 1,
-      height: 40,
+      height: "100%",
     },
     eyeIcon: {
       padding: windowWidth * 0.02,
@@ -506,13 +504,13 @@ const LoginForm = ({ navigation }) => {
     error: {
       color: "red",
       fontSize: windowWidth * 0.035,
-      marginBottom: windowWidth * 0.015,
+      marginBottom: windowHeight * 0.015,
     },
     checkboxRow: {
       flexDirection: "row",
       alignItems: "center",
-      marginTop: windowWidth * 0.02,
-      marginBottom: windowWidth * 0.03,
+      marginTop: windowHeight * 0.02,
+      marginBottom: windowHeight * 0.03,
     },
     rememberMeCheckbox: {
       width: windowWidth * 0.05,
@@ -534,9 +532,9 @@ const LoginForm = ({ navigation }) => {
     },
     loginButton: {
       backgroundColor: "#008080",
-      paddingVertical: windowWidth * 0.035,
+      paddingVertical: windowHeight * 0.015,
       borderRadius: 4,
-      marginTop: windowWidth * 0.03,
+      marginTop: windowHeight * 0.03,
     },
     loginButtonText: {
       color: "#fff",
@@ -545,8 +543,8 @@ const LoginForm = ({ navigation }) => {
     },
     registerContainer: {
       flexDirection: "row",
-      marginTop: windowWidth * 0.02,
-      marginBottom: 30,
+      marginTop: windowHeight * 0.02,
+      marginBottom: windowHeight * 0.03,
     },
     registerText: {
       fontSize: windowWidth * 0.04,
@@ -571,12 +569,14 @@ const LoginForm = ({ navigation }) => {
       <Text style={styles.label}>Login to continue</Text>
 
       <Text style={styles.label}>Username:</Text>
-      <TextInput
-        style={styles.inputContainer}
-        placeholder="Enter your username"
-        value={username}
-        onChangeText={setUsername}
-      />
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your username"
+          value={username}
+          onChangeText={setUsername}
+        />
+      </View>
       {usernameError !== "" && <Text style={styles.error}>{usernameError}</Text>}
 
       <Text style={styles.label}>Password:</Text>
