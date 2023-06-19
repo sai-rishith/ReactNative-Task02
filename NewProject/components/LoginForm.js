@@ -172,7 +172,7 @@
 
 // export default LoginForm;
 
-//below code --> hide and show password feature
+//below code --> hide and show password feature and scroll view
 
 // import React, { useState } from "react";
 // import {
@@ -401,7 +401,7 @@
 
 
 
-// below code is without scroll view 
+// below code is without scroll view and includes hide/show password feature
 import React, { useState } from "react";
 import { View, Text, TextInput, Dimensions, StyleSheet, Image, TouchableOpacity, Button } from "react-native";
 import { validateUserName, validatePassword } from "./Validation";
