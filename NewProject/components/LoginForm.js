@@ -460,7 +460,7 @@ const LoginForm = ({ navigation }) => {
       fontSize: windowWidth * 0.04,
       fontWeight: "bold",
       marginBottom: windowWidth * 0.03,
-      alignSelf: "flex-start", // Align the labels to the left
+      alignSelf: "flex-start", 
     },
     inputContainer: {
       flexDirection: "row",
@@ -485,7 +485,7 @@ const LoginForm = ({ navigation }) => {
     },
     logoContainer: {
       alignItems: "center",
-      marginBottom: windowWidth * 0.02, // Reduce the marginBottom to decrease the space
+      marginBottom: windowWidth * 0.02, 
     },
     logo: {
       width: windowWidth * 0.6,
@@ -503,7 +503,7 @@ const LoginForm = ({ navigation }) => {
     forgotPasswordLink: {
       color: "#008080",
       textDecorationLine: "none",
-      marginLeft: windowWidth * 0.1, // Adjust the margin to create more spacing
+      marginLeft: windowWidth * 0.1, 
     },
     registerContainer: {
       flexDirection: "row",
