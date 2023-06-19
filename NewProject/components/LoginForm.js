@@ -12,13 +12,13 @@
 // import {
 //   validateUserName,
 //   validatePassword,
-// } from "./Validation"; 
+// } from "./Validation";
 
 // const LoginForm = ({ navigation }) => {
 //   const [username, setUsername] = useState("");
 //   const [password, setPassword] = useState("");
-//   const [usernameError, setUsernameError] = useState(""); 
-//   const [passwordError, setPasswordError] = useState(""); 
+//   const [usernameError, setUsernameError] = useState("");
+//   const [passwordError, setPasswordError] = useState("");
 //   const [submittedData, setSubmittedData] = useState([]);
 
 //   const handleLogin = () => {
@@ -154,7 +154,7 @@
 //           value={password}
 //           onChangeText={setPassword}
 //         />
-//         {passwordError !== "" && <Text style={styles.error}>{passwordError}</Text>} 
+//         {passwordError !== "" && <Text style={styles.error}>{passwordError}</Text>}
 
 //         <View style={styles.checkboxRow}>
 //           <Text style={styles.rememberMeText}>Remember me</Text>
@@ -172,10 +172,7 @@
 
 // export default LoginForm;
 
-
-
-
-//hide and show password feature code 
+//hide and show password feature code
 
 import React, { useState } from "react";
 import {
@@ -187,12 +184,9 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  Button
+  Button,
 } from "react-native";
-import {
-  validateUserName,
-  validatePassword,
-} from "./Validation";
+import { validateUserName, validatePassword } from "./Validation";
 
 const LoginForm = ({ navigation }) => {
   const [username, setUsername] = useState("");
@@ -253,19 +247,20 @@ const LoginForm = ({ navigation }) => {
       marginBottom: windowWidth * 0.015,
     },
     inputContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
       borderWidth: 1,
-      borderColor: "#ccc",
+      borderColor: '#ccc',
       borderRadius: 4,
-      padding: windowWidth * 0.02,
       marginBottom: windowWidth * 0.025,
-      flexDirection: "row",
-      alignItems: "center",
+      paddingHorizontal: windowWidth * 0.02,
     },
     input: {
       flex: 1,
+      height: 40,
     },
     eyeIcon: {
-      marginLeft: windowWidth * 0.02,
+      padding: 8,
     },
     error: {
       color: "red",
@@ -308,6 +303,32 @@ const LoginForm = ({ navigation }) => {
       marginLeft: windowWidth * 0.01,
       marginTop: 15,
     },
+    usernameInput: {
+      borderWidth: 1,
+      borderColor: "#ccc",
+      borderRadius: 4,
+      padding: windowWidth * 0.02,
+      marginBottom: windowWidth * 0.025,
+    },
+    passwordInput: {
+      flex: 1,
+      borderWidth: 1,
+      borderColor: "#ccc",
+      borderRadius: 4,
+      padding: windowWidth * 0.02,
+      marginBottom: windowWidth * 0.025,
+    },
+    inputContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      borderWidth: 1,
+      borderColor: "#ccc",
+      borderRadius: 4,
+      marginBottom: windowWidth * 0.025,
+    },
+    eyeIcon: {
+      padding: windowWidth * 0.02,
+    },
   });
 
   return (
@@ -332,7 +353,7 @@ const LoginForm = ({ navigation }) => {
 
         <Text style={styles.label}>Username:</Text>
         <TextInput
-          style={styles.input}
+          style={styles.usernameInput}
           placeholder="Enter your username"
           value={username}
           onChangeText={setUsername}
@@ -341,25 +362,27 @@ const LoginForm = ({ navigation }) => {
           <Text style={styles.error}>{usernameError}</Text>
         )}
 
-        <Text style={styles.label}>Password:</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your password"
-            secureTextEntry={!passwordVisible}
-            value={password}
-            onChangeText={setPassword}
-          />
-          <TouchableOpacity
-            onPress={handleTogglePasswordVisibility}
-            style={styles.eyeIcon}
-          >
-            <Text>{passwordVisible ? "Hide" : "Show"}</Text>
-          </TouchableOpacity>
-        </View>
-        {passwordError !== "" && (
-          <Text style={styles.error}>{passwordError}</Text>
-        )}
+<Text style={styles.label}>Password:</Text>
+<View style={styles.inputContainer}>
+  <TextInput
+    style={styles.input}
+    placeholder="Enter your password"
+    secureTextEntry={!passwordVisible}
+    value={password}
+    onChangeText={setPassword}
+  />
+  <TouchableOpacity
+    onPress={handleTogglePasswordVisibility}
+    style={styles.eyeIcon}
+  >
+    <Text>{passwordVisible ? "Hide" : "Show"}</Text>
+  </TouchableOpacity>
+</View>
+{passwordError !== "" && (
+  <Text style={styles.error}>{passwordError}</Text>
+)}
+
+
 
         <View style={styles.checkboxRow}>
           <Text style={styles.rememberMeText}>Remember me</Text>
@@ -378,6 +401,4 @@ const LoginForm = ({ navigation }) => {
 };
 
 export default LoginForm;
-
-
 
