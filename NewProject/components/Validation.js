@@ -1,3 +1,4 @@
+//Validations for login and registrations forms
 export const validateFirstName = (firstName) => {
     if (firstName.trim() === '') {
       return 'First name is required.';
