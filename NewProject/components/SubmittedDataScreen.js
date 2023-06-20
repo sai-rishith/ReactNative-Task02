@@ -232,14 +232,14 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   itemContainer: {
-    backgroundColor: "#000",
+    backgroundColor: "#fff",
     borderRadius: 8,
     padding: 16,
     marginBottom: 8,
   },
   itemText: {
     fontSize: 20,
-    color: "#fff",
+    color: "#000",
     marginBottom: 12,
   },
   input: {
