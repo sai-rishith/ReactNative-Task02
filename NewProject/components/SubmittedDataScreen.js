@@ -65,16 +65,16 @@
 
 // export default SubmittedDataScreen;
 
-
-
-
-
-
-
-
 //below code with features to save, edit, and delete submitted data
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, StyleSheet, Button, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Button,
+  TextInput,
+} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SubmittedDataScreen = ({ navigation }) => {
@@ -109,7 +109,10 @@ const SubmittedDataScreen = ({ navigation }) => {
 
         updatedData[editingIndex] = editedItem;
 
-        await AsyncStorage.setItem("submittedData", JSON.stringify(updatedData));
+        await AsyncStorage.setItem(
+          "submittedData",
+          JSON.stringify(updatedData)
+        );
         setSubmittedData(updatedData);
 
         setEditingIndex(null);
@@ -172,42 +175,36 @@ const SubmittedDataScreen = ({ navigation }) => {
         />
       </View>
       {editingIndex !== null && (
-  <View style={styles.editContainer}>
-    <Text style={styles.editTitle}>Edit Data</Text>
-    <View style={styles.inputContainer}>
-      <Text style={styles.inputLabel}>Username:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter username"
-        value={editedUsername}
-        onChangeText={(text) => setEditedUsername(text)}
-      />
-    </View>
-    <View style={styles.inputContainer}>
-      <Text style={styles.inputLabel}>Password:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter password"
-        value={editedPassword}
-        onChangeText={(text) => setEditedPassword(text)}
-      />
-    </View>
-    <View style={styles.buttonContainer}>
-      <Button
-        title="Save"
-        onPress={handleEditData}
-        color="#008080"
-      />
-      <Button
-        title="Cancel"
-        onPress={() => setEditingIndex(null)}
-        color="#FF0000"
-      />
-    </View>
-  </View>
-)}
-
-
+        <View style={styles.editContainer}>
+          <Text style={styles.editTitle}>Edit Data</Text>
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Username:</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter username"
+              value={editedUsername}
+              onChangeText={(text) => setEditedUsername(text)}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Password:</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter password"
+              value={editedPassword}
+              onChangeText={(text) => setEditedPassword(text)}
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button title="Save" onPress={handleEditData} color="#008080" />
+            <Button
+              title="Cancel"
+              onPress={() => setEditingIndex(null)}
+              color="#FF0000"
+            />
+          </View>
+        </View>
+      )}
     </View>
   );
 };
@@ -286,11 +283,3 @@ const styles = StyleSheet.create({
 });
 
 export default SubmittedDataScreen;
-
-
-
-
-
-
-
-
