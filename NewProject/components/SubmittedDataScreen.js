@@ -1,5 +1,3 @@
-// use the below code 
-
 import React from "react";
 import { View, Text, FlatList, StyleSheet, Button } from "react-native";
 
