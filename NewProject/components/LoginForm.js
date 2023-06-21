@@ -811,8 +811,9 @@ const LoginForm = ({ navigation }) => {
       <Text style={styles.label}>Username:</Text>
       <View style={styles.inputContainer}>
         <TextInput
-          style={styles.input}
-          placeholder="Enter your username"
+          style={[styles.input,{color:"brown"}]}
+          placeholder="Here you have to enter your email id "
+          placeholderTextColor="blue"
           value={username}
           onChangeText={setUsername}
         />
@@ -822,8 +823,9 @@ const LoginForm = ({ navigation }) => {
       <Text style={styles.label}>Password:</Text>
       <View style={styles.inputContainer}>
         <TextInput
-          style={styles.input}
+        style={[styles.input,{color:"brown"}]}
           placeholder="Enter your password"
+          placeholderTextColor="blue"
           secureTextEntry={!passwordVisible}
           value={password}
           onChangeText={setPassword}

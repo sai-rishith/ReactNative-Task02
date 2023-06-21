@@ -128,11 +128,11 @@
 //   const handleDeleteData = async (index) => {
 //     try {
 //       const confirmed = await confirmDeleteAction(); // Display confirmation prompt
-  
+
 //       if (confirmed) {
 //         const updatedData = [...submittedData];
 //         updatedData.splice(index, 1);
-  
+
 //         await AsyncStorage.setItem("submittedData", JSON.stringify(updatedData));
 //         setSubmittedData(updatedData);
 //       }
@@ -140,7 +140,7 @@
 //       console.log("Error deleting data:", error);
 //     }
 //   };
-  
+
 //   const confirmDeleteAction = () => {
 //     return new Promise((resolve) => {
 //       Alert.alert(
@@ -161,7 +161,6 @@
 //       );
 //     });
 //   };
-  
 
 //   const handleEditButton = (index, item) => {
 //     setEditingIndex(index);
@@ -311,11 +310,9 @@
 
 // export default SubmittedDataScreen;
 
-
-
 //below code with features to save, edit,delete and undo on submitted data
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, StyleSheet, Button, TextInput,Alert } from "react-native";
+import { View, Text, FlatList, StyleSheet, Button, TextInput, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Snackbar } from "react-native-paper";
 
@@ -378,7 +375,7 @@ const SubmittedDataScreen = ({ navigation }) => {
 
         // Show deletion message
         setShowUndoSnackbar(true);
-        setDeletedItem(deletedItem);
+        setDeletedItem({ item: deletedItem, index });
 
         // Automatically hide the snackbar after a certain duration (e.g., 5 seconds)
         setTimeout(() => {
@@ -413,13 +410,22 @@ const SubmittedDataScreen = ({ navigation }) => {
   };
 
   const undoDelete = () => {
-    const updatedData = [...submittedData, deletedItem]; // Add the deleted item back
+    const updatedData = [...submittedData];
+    const { item, index } = deletedItem;
+    updatedData.splice(index, 0, item); // Insert the deleted item at the original position
 
     AsyncStorage.setItem("submittedData", JSON.stringify(updatedData));
     setSubmittedData(updatedData);
 
     setShowUndoSnackbar(false);
     setDeletedItem(null);
+  };
+
+  const handleEditButton = (index) => {
+    const item = submittedData[index];
+    setEditingIndex(index);
+    setEditedUsername(item.username);
+    setEditedPassword(item.password);
   };
 
   return (
@@ -435,7 +441,7 @@ const SubmittedDataScreen = ({ navigation }) => {
             <View style={styles.buttonContainer}>
               <Button
                 title="Edit"
-                onPress={() => handleEditButton(index, item)}
+                onPress={() => handleEditButton(index)}
                 color="#008080"
               />
               <Button
@@ -566,3 +572,5 @@ const styles = StyleSheet.create({
 });
 
 export default SubmittedDataScreen;
+
+
