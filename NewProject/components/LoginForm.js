@@ -629,7 +629,7 @@
 
 
 //below code supports AsyncStorage
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import {
   View,
   Text,
@@ -651,12 +651,10 @@ const LoginForm = ({ navigation }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleLogin = async () => {
-    // Validate the username and password
+  const handleLogin = useCallback(async () => {
     const usernameError = validateUserName(username);
     const passwordError = validatePassword(password);
 
-    // Set the error messages in the state
     setUsernameError(usernameError);
     setPasswordError(passwordError);
 
@@ -667,7 +665,6 @@ const LoginForm = ({ navigation }) => {
       };
 
       try {
-        // Save submitted data to AsyncStorage
         const storedData = await AsyncStorage.getItem("submittedData");
         const existingData = storedData ? JSON.parse(storedData) : [];
         const updatedData = [...existingData, newData];
@@ -681,11 +678,11 @@ const LoginForm = ({ navigation }) => {
         console.log("Error saving data:", error);
       }
     }
-  };
+  }, [username, password, navigation]);
 
-  const handleRegister = () => {
+  const handleRegister = useCallback(() => {
     navigation.navigate("Register");
-  };
+  }, [navigation]);
 
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
@@ -725,6 +722,7 @@ const LoginForm = ({ navigation }) => {
     input: {
       flex: 1,
       height: "100%",
+      color: "brown",
     },
     eyeIcon: {
       padding: windowWidth * 0.02,
@@ -782,17 +780,17 @@ const LoginForm = ({ navigation }) => {
       textDecorationLine: "underline",
       marginLeft: windowWidth * 0.01,
     },
-    label01:{
-      textAlign:'center',
+    label01: {
+      textAlign: "center",
       fontSize: windowWidth * 0.05,
       fontWeight: "bold",
       marginBottom: windowHeight * 0.02,
     },
-    label02:{
+    label02: {
       fontSize: windowWidth * 0.05,
       fontWeight: "bold",
       marginBottom: windowHeight * 0.02,
-    }
+    },
   });
 
   return (
@@ -803,19 +801,21 @@ const LoginForm = ({ navigation }) => {
           source={require("../assets/Docisn_logo.png")}
           resizeMode="contain"
         />
-          <Text style={styles.label01}>Welcome to Docisn Provider App</Text>
+        <Text style={styles.label01}>Welcome to Docisn Provider App</Text>
       </View>
-    
+
       <Text style={styles.label02}>Login to continue</Text>
 
       <Text style={styles.label}>Username:</Text>
       <View style={styles.inputContainer}>
         <TextInput
-          style={[styles.input,{color:"brown"}]}
-          placeholder="Here you have to enter your email id "
+          style={styles.input}
+          placeholder="Here you have to enter your email id"
           placeholderTextColor="blue"
           value={username}
           onChangeText={setUsername}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
       </View>
       {usernameError !== "" && <Text style={styles.error}>{usernameError}</Text>}
@@ -823,12 +823,14 @@ const LoginForm = ({ navigation }) => {
       <Text style={styles.label}>Password:</Text>
       <View style={styles.inputContainer}>
         <TextInput
-        style={[styles.input,{color:"brown"}]}
+          style={styles.input}
           placeholder="Enter your password"
           placeholderTextColor="blue"
           secureTextEntry={!passwordVisible}
           value={password}
           onChangeText={setPassword}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
         <TouchableOpacity
           onPress={() => setPasswordVisible(!passwordVisible)}
