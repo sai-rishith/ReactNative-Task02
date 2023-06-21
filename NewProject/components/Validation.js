@@ -7,7 +7,7 @@ export const validateFirstName = (firstName) => {
   };
   export const validateUserName = (userName) => {
     if (userName.trim() === '') {
-      return 'User name is required.';
+      return 'User name is required. Enter your email-id';
     }
     return '';
   };
