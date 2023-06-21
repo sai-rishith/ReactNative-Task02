@@ -731,6 +731,7 @@ const LoginForm = ({ navigation }) => {
       flex: 1,
       height: "100%",
       color: "brown",
+      fontWeight:'bold'
     },
     eyeIcon: {
       padding: windowWidth * 0.02,
@@ -821,7 +822,7 @@ const LoginForm = ({ navigation }) => {
         <TextInput
           style={styles.input}
           placeholder="Here you have to enter your email id"
-          placeholderTextColor="blue"
+          placeholderTextColor="black"
           value={username}
           onChangeText={setUsername}
           autoCapitalize="none"
@@ -835,7 +836,7 @@ const LoginForm = ({ navigation }) => {
         <TextInput
           style={styles.input}
           placeholder="Enter your password"
-          placeholderTextColor="blue"
+          placeholderTextColor="black"
           secureTextEntry={!passwordVisible}
           value={password}
           onChangeText={setPassword}

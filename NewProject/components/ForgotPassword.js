@@ -77,6 +77,7 @@ const ForgotPasswordForm = () => {
           setMobileNumber(numericValue);
         }}
         placeholder="Enter mobile number"
+        placeholderTextColor="black"
         keyboardType="numeric"
         maxLength={10}
       />
@@ -90,6 +91,7 @@ const ForgotPasswordForm = () => {
           value={otp}
           onChangeText={setOTP}
           placeholder="Enter OTP"
+          placeholderTextColor="black"
           keyboardType="numeric"
           maxLength={6}
         />
@@ -151,6 +153,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     fontSize: 16,
     backgroundColor: '#ffffff',
+    fontWeight:'bold'
   },
   otpContainer: {
     flexDirection: 'row',

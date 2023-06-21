@@ -120,6 +120,7 @@ const RegistrationForm = () => {
         value={firstName}
         onChangeText={setFirstName}
         placeholder="Enter first name"
+        placeholderTextColor="black"
         keyboardType="default"
       />
       {firstNameError ? <Text style={styles.error}>{firstNameError}</Text> : null}
@@ -130,6 +131,7 @@ const RegistrationForm = () => {
         value={lastName}
         onChangeText={setLastName}
         placeholder="Enter last name"
+        placeholderTextColor="black"
         keyboardType="default"
       />
       {lastNameError ? <Text style={styles.error}>{lastNameError}</Text> : null}
@@ -140,6 +142,7 @@ const RegistrationForm = () => {
         value={email}
         onChangeText={setEmail}
         placeholder="Enter email"
+        placeholderTextColor="black"
         keyboardType="email-address"
       />
       {emailError ? <Text style={styles.error}>{emailError}</Text> : null}
@@ -150,6 +153,7 @@ const RegistrationForm = () => {
         value={phoneNumber}
         onChangeText={(text) => setPhoneNumber(text.replace(/[^0-9]/g, '').slice(0, 10))}
         placeholder="Enter phone number"
+        placeholderTextColor="black"
         keyboardType="phone-pad"
         maxLength={10}
       />
@@ -162,6 +166,7 @@ const RegistrationForm = () => {
           value={otp}
           onChangeText={(text) => setOTP(text.replace(/[^0-9]/g, '').slice(0, 6))}
           placeholder="Enter OTP"
+          placeholderTextColor="black"
           keyboardType="numeric"
           maxLength={6}
         />
@@ -219,6 +224,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 10,
     paddingHorizontal: 10,
+    fontWeight:'bold'
   },
   otpContainer: {
     flexDirection: 'row',

@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Dimensions,
   Button,
+  Image,
   Modal,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -65,6 +66,16 @@ const CreatePasswordForm = () => {
 
   return (
     <View style={styles.container}>
+         <Image
+        style={styles.logo}
+        source={require('../assets/Docisn_logo.png')}
+        resizeMode="contain"
+      />
+      <Image
+        style={styles.logo}
+        source={require('../assets/password.png')}
+        resizeMode="contain"
+      />
       <Text style={styles.label}>Create Password</Text>
 
       <Text style={styles.subLabel}>Password</Text>
@@ -72,7 +83,7 @@ const CreatePasswordForm = () => {
         <TextInput
           style={styles.input}
           placeholder="Enter your password"
-          placeholderTextColor="blue"
+          placeholderTextColor="black"
           secureTextEntry={!passwordVisible}
           value={password}
           onChangeText={setPassword}
@@ -92,7 +103,7 @@ const CreatePasswordForm = () => {
         <TextInput
           style={styles.input}
           placeholder="Confirm your password"
-          placeholderTextColor="blue"
+          placeholderTextColor="black"
           secureTextEntry={!confirmPasswordVisible}
           value={confirmPassword}
           onChangeText={setConfirmPassword}
@@ -167,6 +178,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "100%",
     color: "brown",
+    fontWeight:'bold'
   },
   eyeIcon: {
     padding: windowWidth * 0.02,
