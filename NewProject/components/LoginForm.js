@@ -761,7 +761,8 @@ const LoginForm = ({ navigation }) => {
     },
     forgotPasswordLink: {
       color: "#008080",
-      textDecorationLine: "underline",
+      textDecorationLine: "none",
+      fontWeight:'bold',
       marginLeft: windowWidth * 0.02,
     },
     loginButton: {
@@ -785,7 +786,8 @@ const LoginForm = ({ navigation }) => {
     },
     registerLink: {
       color: "#008080",
-      textDecorationLine: "underline",
+      textDecorationLine: "none",
+      fontWeight:'bold',
       marginLeft: windowWidth * 0.01,
     },
     label01: {

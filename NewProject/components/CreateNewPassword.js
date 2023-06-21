@@ -185,7 +185,8 @@ const styles = StyleSheet.create({
   link: {
     fontSize: 16,
     color: 'blue',
-    textDecorationLine: 'underline',
+    textDecorationLine: 'none',
+    fontWeight:'bold'
   },
   modalContainer: {
     flex: 1,
@@ -211,6 +212,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'blue',
     textDecorationLine: 'none',
+    fontWeight:'bold'
   },
   error: {
     color: 'red',

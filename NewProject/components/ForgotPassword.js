@@ -8,7 +8,7 @@ import {
   Image,
   StyleSheet,
   Dimensions,
-  Button
+  Button,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { validatePhoneNumber, validateOTP } from './Validation';
@@ -69,17 +69,17 @@ const ForgotPasswordForm = () => {
 
       <Text style={styles.label}>Mobile Number</Text>
       <TextInput
-  style={styles.input}
-  value={mobileNumber}
-  onChangeText={(text) => {
-    // Filter out non-numeric characters
-    const numericValue = text.replace(/[^0-9]/g, '');
-    setMobileNumber(numericValue);
-  }}
-  placeholder="Enter mobile number"
-  keyboardType="numeric"
-  maxLength={10}
-/>
+        style={styles.input}
+        value={mobileNumber}
+        onChangeText={(text) => {
+          // Filter out non-numeric characters
+          const numericValue = text.replace(/[^0-9]/g, '');
+          setMobileNumber(numericValue);
+        }}
+        placeholder="Enter mobile number"
+        keyboardType="numeric"
+        maxLength={10}
+      />
 
       {mobileNumberError ? <Text style={styles.error}>{mobileNumberError}</Text> : null}
 
@@ -110,7 +110,9 @@ const ForgotPasswordForm = () => {
 
       <View style={styles.loginContainer}>
         <Text style={styles.loginText}>Remember your password? </Text>
-        <Text style={[styles.loginText, styles.highlightedText]} onPress={handleLogin}>Log in</Text>
+        <Text style={[styles.loginText, styles.highlightedText]} onPress={handleLogin}>
+          Log in
+        </Text>
       </View>
     </View>
   );
@@ -156,12 +158,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   otpInput: {
-    width: '70%',
+    flex: 1,
+    marginRight: 10,
   },
   getOTPButton: {
     backgroundColor: '#2ecc71',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
@@ -172,7 +175,8 @@ const styles = StyleSheet.create({
   },
   resendText: {
     color: '#3498db',
-    textDecorationLine: 'underline',
+    textDecorationLine: 'none',
+    fontWeight:'bold',
     alignSelf: 'flex-end',
     fontSize: 16,
   },
@@ -193,15 +197,17 @@ const styles = StyleSheet.create({
   loginText: {
     fontSize: 16,
     color: '#333333',
+    fontWeight:'bold'
   },
   highlightedText: {
     fontWeight: 'bold',
-    textDecorationLine: 'underline',
+    textDecorationLine: 'none',
   },
   error: {
     color: '#e74c3c',
     marginBottom: 10,
     fontSize: 16,
+    alignSelf: 'flex-start',
   },
 });
 

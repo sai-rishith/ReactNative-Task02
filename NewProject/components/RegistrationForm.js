@@ -241,7 +241,8 @@ const styles = StyleSheet.create({
   },
   resendText: {
     color: 'blue',
-    textDecorationLine: 'underline',
+    textDecorationLine: 'none',
+    fontWeight:'bold',
     alignSelf: 'flex-end',
   },
   buttonContainer: {
@@ -262,7 +263,7 @@ const styles = StyleSheet.create({
   },
   highlightedText: {
     fontWeight: 'bold',
-    textDecorationLine: 'underline',
+    textDecorationLine: 'none',
   },
   error: {
     color: 'red',
