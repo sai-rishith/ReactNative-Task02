@@ -684,6 +684,14 @@ const LoginForm = ({ navigation }) => {
     navigation.navigate("Register");
   }, [navigation]);
 
+  
+  const handleForgotPassword = useCallback(() => {
+    navigation.navigate("ForgotPassword");
+  }, [navigation]);
+
+  
+  
+
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
 
@@ -850,7 +858,7 @@ const LoginForm = ({ navigation }) => {
         </TouchableOpacity>
         <Text style={styles.rememberMeText}>Remember me</Text>
         <TouchableOpacity>
-          <Text style={styles.forgotPasswordLink}>Forgot password?</Text>
+          <Text style={styles.forgotPasswordLink} onPress={handleForgotPassword}>Forgot password?</Text>
         </TouchableOpacity>
       </View>
 
