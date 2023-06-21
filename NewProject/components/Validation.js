@@ -61,4 +61,12 @@ export const validateFirstName = (firstName) => {
     }
     return '';
   };
+  export const validateConfirmPassword = (password, confirmPassword) => {
+    if (confirmPassword.trim() === '') {
+      return 'Confirm password is required.';
+    } else if (password !== confirmPassword) {
+      return 'Passwords do not match.';
+    }
+    return '';
+  };
   
