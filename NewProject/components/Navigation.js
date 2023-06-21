@@ -18,6 +18,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        
         <Stack.Screen name="Login" component={LoginForm} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="Register" component={RegistrationForm} />
