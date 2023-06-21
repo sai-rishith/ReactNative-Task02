@@ -782,6 +782,17 @@ const LoginForm = ({ navigation }) => {
       textDecorationLine: "underline",
       marginLeft: windowWidth * 0.01,
     },
+    label01:{
+      textAlign:'center',
+      fontSize: windowWidth * 0.05,
+      fontWeight: "bold",
+      marginBottom: windowHeight * 0.02,
+    },
+    label02:{
+      fontSize: windowWidth * 0.05,
+      fontWeight: "bold",
+      marginBottom: windowHeight * 0.02,
+    }
   });
 
   return (
@@ -792,9 +803,10 @@ const LoginForm = ({ navigation }) => {
           source={require("../assets/Docisn_logo.png")}
           resizeMode="contain"
         />
+          <Text style={styles.label01}>Welcome to Docisn Provider App</Text>
       </View>
-      <Text style={styles.label}>Welcome to Docisn Provider App</Text>
-      <Text style={styles.label}>Login to continue</Text>
+    
+      <Text style={styles.label02}>Login to continue</Text>
 
       <Text style={styles.label}>Username:</Text>
       <View style={styles.inputContainer}>
