@@ -744,7 +744,8 @@ const SubmittedDataScreen = ({ navigation }) => {
       <Text style={styles.title}>Submitted Data</Text>
       <TextInput
         style={styles.input}
-        placeholder="Search"
+        placeholder="Search...."
+        placeholderTextColor="black"
         value={searchKeyword}
         onChangeText={setSearchKeyword}
       />
@@ -862,6 +863,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     padding: 8,
     width: "100%",
+    fontWeight:'bold'
   },
   editContainer: {
     backgroundColor: "#F0F0F0",
