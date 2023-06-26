@@ -730,7 +730,7 @@ const LoginForm = ({ navigation }) => {
     input: {
       flex: 1,
       height: "100%",
-      color: "brown",
+      color: "black",
       fontWeight:'bold'
     },
     eyeIcon: {
